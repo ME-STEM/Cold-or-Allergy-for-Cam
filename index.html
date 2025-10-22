@@ -6,7 +6,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
  
 Authors in chronological order of contribution:
-[ADD YOUR NAME HERE]
+[Camryn Mays]
 	
 Further Information:
 https://www.w3schools.com/w3css/default.asp
@@ -17,10 +17,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-[ADD YOUR DISCRIPTION HERE]
+[used to determine whether one has a cold or an allergy]
 	
 Known Issues:
-[ADD ANY KNOWN ISSUES HERE]
+[N/A]
 
 -->
 	
@@ -34,27 +34,33 @@ Known Issues:
 
 
 <script>
-        var allergy_count = 0;
-        var cold_count = 0;
+	var allergy_count = 0
+	var cold_count = 0
+	var percent_allergy = 0;
+    var percent_cold = 0;
 
+       function allergyAdd(){
+		allergy_count = allergy_count + 1;
+		alert("allergy_count is" + allergy_count + "\ncold_count is " + cold_count)
+	   }
 
-        function allergyAdd(){
-            allergy_count = allergy_count + 1;
-		alert(allergy_count);
-        }
+	   function coldAdd(){
+		cold_count = cold_count + 1
+	   }
 
-        function coldAdd(){
-            cold_count = cold_count + 1;
-        }
-
-  </script>
-
-
+	   function changeText(){
+		var allergy_percent = allergy_count/(allergy_count + cold_count)*100
+		var cold_percent = cold_count/(allergy_count + cold_count)*100
+		var initialText = document.getElementById("results"); 
+		initialText.innerHTML = "Probability it is allergies = " + allergy_percent + "% <br> Probability it is a cold = " + cold_percent + "%"
+	   }
+</script>
 
 <style>	
 .body {
      margin: 0em;
 }
+
 .page {
     width: 100vw;
     height: 100vh;
@@ -93,9 +99,10 @@ Known Issues:
 	</div>
 	
     	<div id="content" class="w3-container">
-        <p>Put Question 1 content here.</p>    
+        <p>How long did it take for symptoms to appear?</p>    
     	</div>
-</div>
+        	<a href="#two" onclick=coldAdd() class="w3-btn w3-grey w3-round"> A couple of days </a>
+            <a href="#two" onclick=allergyAdd() class="w3-btn w3-grey w3-round"> A couple of minutes </a>
 
 <div class="page" id="two">
 	<div class="w3-container w3-flat-carrot">
@@ -103,13 +110,68 @@ Known Issues:
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Content of page 2 goes here.</p>
+		<p>How long did symptoms last for?</p>
+	</div>
+    <a href="#three" onclick=coldAdd() class="w3-btn w3-grey w3-round"> A couple of weeks</a>
+    <a href="#three" onclick=allergyAdd() class="w3-btn w3-grey w3-round"> A couple of months</a>
+</div>	
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a fever?</p>
+        <a href="#four" onclick=coldAdd() class="w3-btn w3-grey w3-round"> Yes</a>
+        <a href="#four" onclick=allergyAdd() class="w3-btn w3-grey w3-round"> No</a>
 	</div>
 </div>	
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are your eyes itchy?</p>
+        <a href="#five" onclick=allergyAdd() class="w3-btn w3-grey w3-round"> Yes</a>
+        <a href="#five" onclick=coldAdd() class="w3-btn w3-grey w3-round"> No</a>
+	</div>
+</div>	
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a sore throat?</p>
+        <a href="#six" onclick=coldAdd() class="w3-btn w3-grey w3-round"> Yes</a>
+        <a href="#six" onclick=allergyAdd() class="w3-btn w3-grey w3-round"> No</a>
+	</div>
+</div>	
+<div class="page" id="six">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have hives or a skin rash?</p>
+        <a href="#seven" onclick=allergyAdd() class="w3-btn w3-grey w3-round"> Yes</a>
+        <a href="#seven" onclick=coldAdd() class="w3-btn w3-grey w3-round"> No</a>
+	</div>
+</div>	
+<div class="page" id="seven">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+	<div id="content" class="w3-container">
+
+        <p id="results"> Press on the button below to see your results!</p>
+		<a onclick="changeText()" class="w3-btn w3-grey w3-round"> Click here to see your results!</a>
+	</div>
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
 </footer>
+</body>	   
 
-</body>
 </html>
